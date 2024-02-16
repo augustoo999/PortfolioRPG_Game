@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5893912ee8fd353479c88f97f839e4cf, type: 3}
+  m_Name: NPC_N1
+  m_EditorClassIdentifier: 
+  actor: {fileID: 2410260550464681601, guid: 5da07ae09da61cc449b1ac41054d60b5, type: 3}
+  speaker: {fileID: 0}
+  sentence: 
+  dialogues:
+  - actorName: NPCN1
+    ProfilePhoto: {fileID: 569420613, guid: 1c43598cb246d3b4ab5eafcf0a104c42, type: 3}
+    sentence:
+      portuguese: Ola!
+      english: 
+      spanish: 
+  - actorName: PLAYER
+    ProfilePhoto: {fileID: 306870644, guid: 516dfc38a481e9b45870dfc99baafed0, type: 3}
+    sentence:
+      portuguese: Tudo bem?
+      english: 
+      spanish: 
+  - actorName: NPCN1
+    ProfilePhoto: {fileID: 569420613, guid: 1c43598cb246d3b4ab5eafcf0a104c42, type: 3}
+    sentence:
+      portuguese: Tudo, e contigo?
+      english: 
+      spanish: 
