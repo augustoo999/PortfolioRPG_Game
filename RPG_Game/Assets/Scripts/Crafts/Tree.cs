@@ -10,6 +10,8 @@ public class Tree : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private GameObject woodDrop;
+    [SerializeField]
+    private int totalWood;
 
     void Start()
     {
@@ -29,7 +31,10 @@ public class Tree : MonoBehaviour
 
         if (TreeHp <= 0)
         {
-            Instantiate(woodDrop, transform.position, transform.rotation);
+            for (int i = 0; i < totalWood; i++)
+            {
+                Instantiate(woodDrop, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f), transform.rotation);
+            }
             anim.SetTrigger("cut");
         }
     }
