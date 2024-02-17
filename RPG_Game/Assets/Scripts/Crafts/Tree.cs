@@ -12,6 +12,9 @@ public class Tree : MonoBehaviour
     private GameObject woodDrop;
     [SerializeField]
     private int totalWood;
+    [SerializeField]
+    private ParticleSystem leafsParticles;
+    private bool isCut;
 
     void Start()
     {
@@ -28,20 +31,22 @@ public class Tree : MonoBehaviour
         TreeHp--;
 
         anim.SetTrigger("isHitting");
+        leafsParticles.Play();
 
-        if (TreeHp <= 0)
+        if (TreeHp == 0)
         {
             for (int i = 0; i < totalWood; i++)
             {
                 Instantiate(woodDrop, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f), transform.rotation);
             }
             anim.SetTrigger("cut");
+            isCut = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Axe"))
+        if (collision.CompareTag("Axe") && !isCut)
         {
             Debug.Log("Acertou");
             OnHit();
