@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerItems : MonoBehaviour
 {
     public int woodPlayer;
+    public float waterPlayer;
+    private float waterLimit = 50;
 
-    void Start()
+    public void WaterLimit(float water)
     {
-        
-    }
-
-    void Update()
-    {
-        
+        if (waterPlayer < waterLimit)
+        {
+            waterPlayer += water;
+        }
     }
 }

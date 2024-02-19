@@ -8,10 +8,12 @@ public class Player : MonoBehaviour
     public float running;
     public float roll;
     private float initialSpeed;
+    private PlayerItems playerItems;
     private bool _isRunning;
     private bool _isRolling;
     private bool _isCutting;
     private bool _isDigging;
+    private bool _isWatering;
     private Rigidbody2D rb;
     private Vector2 _direction;
     private int tools;
@@ -46,10 +48,17 @@ public class Player : MonoBehaviour
         set { _isDigging = value; }
     }
 
+    public bool isWatering
+    {
+        get { return _isWatering; }
+        set { _isWatering = value; }
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         initialSpeed = speed;
+        playerItems = GetComponent<PlayerItems>();
     }
 
     private void Update()
@@ -74,6 +83,7 @@ public class Player : MonoBehaviour
         OnRolling();
         OnCutting();
         OnDigging();
+        OnWatering();
     }
     private void FixedUpdate()
     {
@@ -151,6 +161,27 @@ public class Player : MonoBehaviour
             {
                 isDigging = false;
                 speed = initialSpeed;
+            }
+        }
+    }
+
+    void OnWatering()
+    {
+        if (tools == 3)
+        {
+            if (Input.GetMouseButtonDown(0) && playerItems.waterPlayer > 0)
+            {
+                isWatering = true;
+                speed = 0;
+            }
+            if (Input.GetMouseButtonUp(0) || playerItems.waterPlayer <= 0)
+            {
+                isWatering = false;
+                speed = initialSpeed;
+            }
+            if (isWatering)
+            {
+                playerItems.waterPlayer -= 0.01f;
             }
         }
     }
