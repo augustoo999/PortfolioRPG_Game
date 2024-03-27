@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
     private bool _isWatering;
     private Rigidbody2D rb;
     private Vector2 _direction;
-    private int tools;
+    [HideInInspector]
+    public int tools;
 
     public Vector2 direction 
     {
@@ -65,17 +66,17 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            tools = 1;
+            tools = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            tools = 2;
+            tools = 1;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            tools = 3;
+            tools = 2;
         }
 
         OnInput();
@@ -133,7 +134,7 @@ public class Player : MonoBehaviour
 
     void OnCutting()
     {
-        if (tools == 1)
+        if (tools == 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -150,7 +151,7 @@ public class Player : MonoBehaviour
 
     void OnDigging()
     {
-        if (tools == 2)
+        if (tools == 1)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -167,7 +168,7 @@ public class Player : MonoBehaviour
 
     void OnWatering()
     {
-        if (tools == 3)
+        if (tools == 2)
         {
             if (Input.GetMouseButtonDown(0) && playerItems.waterPlayer > 0)
             {
