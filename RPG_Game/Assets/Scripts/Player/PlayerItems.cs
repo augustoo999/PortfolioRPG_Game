@@ -8,6 +8,7 @@ public class PlayerItems : MonoBehaviour
     public int woodPlayer;
     public float waterPlayer;
     public int carrotPlayer;
+    public int fishes;
 
     [Header("Limits")]
     [SerializeField]
@@ -16,6 +17,9 @@ public class PlayerItems : MonoBehaviour
     private float carrotLimit = 10;
     [SerializeField]
     private float woodLimit = 5;
+    [SerializeField]
+    private float fishesLimit = 3f;
+
 
     public float _WaterLimit 
     { 
@@ -31,6 +35,10 @@ public class PlayerItems : MonoBehaviour
     { 
         get => woodLimit; 
         set => woodLimit = value; 
+    }
+    public float _FishesLimit 
+    { get => fishesLimit; 
+      set => fishesLimit = value; 
     }
 
     public void WaterLimit(float water)
