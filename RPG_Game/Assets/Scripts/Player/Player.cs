@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool isPaused;
     public float speed;
     public float running;
     public float roll;
@@ -64,31 +65,42 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+
+        if (!isPaused)
         {
-            tools = 0;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                tools = 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                tools = 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                tools = 2;
+            }
+
+            OnInput();
+            OnRun();
+            OnRolling();
+            OnCutting();
+            OnDigging();
+            OnWatering();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            tools = 1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            tools = 2;
-        }
-
-        OnInput();
-        OnRun();
-        OnRolling();
-        OnCutting();
-        OnDigging();
-        OnWatering();
+        
     }
     private void FixedUpdate()
     {
-        OnMove();
+        if (!isPaused)
+        {
+            OnMove();
+        }
+
+        
     }
 
     #region Movement
